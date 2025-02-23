@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resume</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #008B8B;
+            color: white;
+        }
+        .section-header {
+            background-color: #FFD700;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .navbar {
+            display: flex;
+            position: sticky;
+            align-items: center;
+            justify-content: space-between;
+            top: 0px;
+            background: RGB(255, 224, 39);
+            background-blend-mode: darken;
+            background-size: cover;
+            color: white;
+            padding: 10px 20px;
+        }
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        .nav-list li {
+            margin-right: 20px;
+        }
+
+        .nav-list li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="text-center">
+            <div id="top-header">
+            <nav class="navbar">
+            <ul class="nav-list">
+                <li>
+                    <a href="#Education">Education</a>
+                </li>
+                <li>
+                    <a href="#Experience">Experience</a>
+                </li>
+                <li>
+                    <a href="#Skills">Skills</a>
+                </li>
+                <li>
+                    <a href="#Awards">Awards and Recognition</a>
+                </li>
+                <li>
+                    <a href="#Certs">Certifications</a>
+                </li>
+        </nav>
+            </div>
+            <h1>{{ personal_info.name }}</h1>
+            <p><strong>{{ personal_info.job_role }}</strong></p>
+            <ul class="list-unstyled">
+                <li><strong>Email:</strong> {{ personal_info.email }}</li>
+                <li><strong>Phone:</strong> {{ personal_info.phone_no }}</li>
+                <li><strong>Address:</strong> {{ personal_info.address }}</li>
+            </ul>
+        </header>
+
+        <section>
+            <h2 class="section-header" id="Education">Education</h2>
+            {% for ed in education %}
+                <div>
+                    <h4>{{ ed.degree }}</h4>
+                    <p>{{ ed.institute_name }} | {{ ed.start_date }} - {{ ed.end_date }}</p>
+                    <p><strong>Grade:</strong> {{ ed.grade }}</p>
+                </div>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h2 class="section-header" id="Experience">Experience</h2>
+            {% for exp in experience %}
+                <div>
+                    <h4>{{ exp.job_title }} - {{ exp.company_name }}</h4>
+                    <p>{{ exp.start_date }} - {{ exp.end_date }}</p>
+                    <p>{{ exp.description }}</p>
+                </div>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h2 class="section-header" id="Skills">Skills</h2>
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill.name }} - {{ skill.proficiency }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="section-header" id="Awards">Awards and Recognition</h2>
+            {% for a in awards %}
+                <p>{{ a.description }}</p>
+            {% endfor %}
+        </section>
+
+         <section>
+            <h2 class="section-header" id="Certs">Certifications</h2>
+            <p> Cognizant Certified Data Modeling Fundamentals</p>
+             <p> Docker Fundamentals Certification by Docker Inc.</p>
+             <p> Microsoft Azure Fundamentals (AZ-900)</p>
+             <p> Microsoft Azure Developer Associate(AZ-204)</p>
+             <p> Microsoft Azure DevOps Expert(AZ-400)</p>
+        </section>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
