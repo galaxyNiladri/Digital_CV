@@ -1,2 +1,2 @@
 django
-ckeditor
+django-ckeditor
